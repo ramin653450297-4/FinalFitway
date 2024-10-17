@@ -1,0 +1,43 @@
+.container {
+    text-align: center;
+    margin: 50px auto;
+  }
+  
+  .formContainer {
+    width: 300px;
+    margin: auto;
+  }
+  
+  .input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .button {
+    padding: 10px;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+
+.buttonsContainer {
+  margin-top: 20px;
+}
+
+  .coverImage {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Optional: adds rounded corners */
+  }
+
+  .page {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
