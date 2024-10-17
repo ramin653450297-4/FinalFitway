@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     const token = createToken(user._id);
     console.log('JWT Token created:', token);
 
-    return NextResponse.json({ token, _id: user._id }, { status: 200 }); // Include user ID if needed
+    return NextResponse.json({ token, _id: user._id }, { status: 200 }); 
   } catch (error) {
     console.error('Error during login:', error);
     return NextResponse.json({ message: 'Login failed' }, { status: 500 });

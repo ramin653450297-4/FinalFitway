@@ -10,9 +10,8 @@ export async function POST(request: Request) {
     const { email, password, firstName, lastName , phoneNumber } = await request.json();
 
     // ตรวจสอบว่า email มีอยู่ในระบบแล้วหรือไม่
-    const existingUser = await User.findOne({
-      $or: [{ email }]
-    });
+    const existingUser = await User.findOne({ email });
+    
 
     if (existingUser) {
       if (existingUser.email === email) {

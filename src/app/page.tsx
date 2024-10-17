@@ -8,8 +8,11 @@ import React from "react";
 export default function Home() {
   const { data: session } = useSession(); 
   console.log('Session:', session); 
-
+  
   if (session) {
+    if (status === "loading") {
+      return <p>Loading...</p>; // แสดงหน้ารอเมื่อ session กำลังโหลด
+    }
     const email = session.user?.email; 
     return (
       <>
