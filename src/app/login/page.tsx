@@ -5,18 +5,29 @@ import { useRouter } from 'next/navigation';
 import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const router = useRouter();
-  
+
+  // ฟังก์ชัน handleChange สำหรับจัดการข้อมูลฟอร์ม
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // ฟังก์ชัน handleLogin สำหรับจัดการการล็อกอิน
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(''); 
+    setError('');
 
-    // Validation เบื้องต้น
-    if (password.length < 5) {
+    // Validation รหัสผ่าน
+    if (formData.password.length < 5) {
       setError('รหัสผ่านต้องมีอย่างน้อย 5 ตัวอักษร');
       return;
     }
@@ -27,14 +38,18 @@ const LoginPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData), // ส่ง formData แทนแยกเป็น email/password
       });
 
       if (response.ok) {
         const data = await response.json();
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userEmail', formData.email);
+
         setSuccessMessage(data.message || 'เข้าสู่ระบบสำเร็จ');
-        localStorage.setItem('token', data.token); 
-        router.push('/');
+
+        // ส่งข้อมูลไปยังหน้า Home หลังจากเข้าสู่ระบบสำเร็จ
+        router.push(`/?email=${encodeURIComponent(formData.email)}`);
       } else {
         const data = await response.json();
         setError(data.message || 'เข้าสู่ระบบล้มเหลว');
@@ -53,8 +68,8 @@ const LoginPage = () => {
             type="email"
             name="email"
             placeholder="อีเมล"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleChange} // เรียก handleChange เมื่อผู้ใช้กรอกข้อมูล
             className={styles.input}
             required
           />
@@ -62,8 +77,8 @@ const LoginPage = () => {
             type="password"
             name="password"
             placeholder="รหัสผ่าน"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleChange} // เรียก handleChange เมื่อผู้ใช้กรอกข้อมูล
             className={styles.input}
             required
           />

@@ -3,21 +3,18 @@ import styles from "./page.module.css";
 import { Button } from "@mui/material";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 
 export default function Home() {
-  const { data: session } = useSession(); 
-  console.log('Session:', session); 
-  
-  if (session) {
-    if (status === "loading") {
-      return <p>Loading...</p>; // แสดงหน้ารอเมื่อ session กำลังโหลด
-    }
-    const email = session.user?.email; 
+  const searchParams = useSearchParams(); // ดึงข้อมูลจาก query
+  const email = searchParams.get('email');
+  if(email){
     return (
       <>
         <div className={styles.page}>HomePage</div>
-        <p>Welcome, {email}</p> 
+        <p>Welcome to Home Page</p> 
+        {email && <p>Logged in as: {email}</p>} 
         <Button variant="contained" onClick={() => signOut()}>
           Logout
         </Button>
