@@ -1,0 +1,73 @@
+/* RegisterPage.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.pageContainer {
+  font-family: "Kanit", sans-serif;
+  display: flex;
+  justify-content: center;
+  background: url('/images/BGregis.png') no-repeat center center fixed; /* เพิ่มรูปภาพพื้นหลัง */
+  background-size: cover; /* ปรับขนาดให้เต็มพื้นที่ */
+  align-items: center;
+  min-height: 100vh; /* ให้เต็มหน้าจอ */
+  background-color: #f4f4f4; /* สีพื้นหลังที่นุ่มนวล */
+  padding: 20px;
+}
+
+.formContainer {
+  background-color: #ffffff; /* สีพื้นหลังของฟอร์ม */
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* เงา */
+  padding: 30px;
+  width: 400px; /* ความกว้างของฟอร์ม */
+}
+
+.formContainer h1 {
+  text-align: center; /* จัดกลาง */
+  margin-bottom: 20px; /* ช่องว่างด้านล่าง */
+  color: #4682B4; /* สีของข้อความ */
+}
+
+.formContainer input {
+  font-family: "Kanit", sans-serif;
+  width: 100%; /* ให้เต็มความกว้าง */
+  padding: 10px; /* ช่องว่างภายใน */
+  margin: 10px 0 ; /* ช่องว่างระหว่าง input */
+  border: 1px solid #979797; /* เส้นขอบ */
+  font-size: 16px; /* ขนาดฟอนต์ */
+  border-radius: 30px;
+}
+
+.formContainer input:focus {
+  border-color: #0070f3; /* สีขอบเมื่อโฟกัส */
+  outline: none; /* ไม่แสดงเส้นกรอบ */
+}
+
+.formContainer button {
+  font-family: "Kanit", sans-serif;
+  width: 100%; /* ให้เต็มความกว้าง */
+  padding: 10px; /* ช่องว่างภายใน */
+  margin-top: 10px; /* ช่องว่างด้านบน */
+  background-color: #4682B4; /* สีพื้นหลังของปุ่ม */
+  color: #ffffff; /* สีข้อความ */
+  border: none; /* ไม่มีเส้นขอบ */
+  border-radius: 30px; /* มุมมน */
+  font-size: 16px; /* ขนาดฟอนต์ */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือ */
+  transition: background-color 0.3s; /* เอฟเฟกต์การเปลี่ยนสี */
+}
+
+.formContainer button:hover {
+  background-color: #005bb5; /* สีพื้นหลังเมื่อชี้ไปที่ปุ่ม */
+}
+
+.error {
+  color: red; /* สีข้อความสำหรับข้อผิดพลาด */
+  margin-top: 10px; /* ช่องว่างด้านบน */
+  text-align: center; /* จัดกลาง */
+}
+
+.success {
+  color: green; /* สีข้อความสำหรับข้อความสำเร็จ */
+  margin-top: 10px; /* ช่องว่างด้านบน */
+  text-align: center; /* จัดกลาง */
+}
